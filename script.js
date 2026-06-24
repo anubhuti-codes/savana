@@ -1,4 +1,3 @@
-// PRODUCTS
 const products = [
   { id: 1, name: "Floral Dress", price: 1499, image: "images/floral-dress.jpg" },
   { id: 2, name: "Denim Jacket", price: 999, image: "images/denim-jacket.jpg" },
@@ -22,8 +21,6 @@ const products = [
   { id: 20, name: "Leather Handbag", price: 1999, image: "images/leather-bag.jpg" },
   { id: 21, name: "Track Pants", price: 999, image: "images/track-pants.jpg" }
 ];
-
-// SALE PRODUCTS
 const saleProducts = [
   { id: 201, name: "Red Dress", price: 899, oldPrice: 1999, image: "images/red-dress.jpg" },
   { id: 202, name: "Blue Denim Jacket", price: 999, oldPrice: 2499, image: "images/blue-jacket.jpg" },
@@ -39,11 +36,9 @@ const saleProducts = [
   { id: 212, name: "Running Shoes", price: 1399, oldPrice: 3499, image: "images/running-shoes.jpg" }
 ];
 
-// DOM
 const productList = document.getElementById("productList");
 const saleList = document.getElementById("saleList");
 
-// DISPLAY PRODUCTS
 function displayProducts(items) {
   productList.innerHTML = "";
 
@@ -66,7 +61,6 @@ function displayProducts(items) {
   });
 }
 
-// DISPLAY SALE
 function displaySale(items) {
   saleList.innerHTML = "";
 
@@ -89,10 +83,8 @@ function displaySale(items) {
   });
 }
 
-// CART
 let cart = [];
 
-// ADD TO CART
 function addToCart(id, type) {
   let product = type === "main"
     ? products.find(p => p.id === id)
@@ -112,12 +104,10 @@ function addToCart(id, type) {
   showToast(product.name + " added to cart!");
 }
 
-// RENDER CART + SUMMARY
 function renderCart() {
   const cartItems = document.getElementById("cartItems");
   const cartCount = document.getElementById("cartCount");
 
-  // NEW summary elements 
   const subtotalEl = document.getElementById("subtotal");
   const deliveryEl = document.getElementById("delivery");
   const finalTotalEl = document.getElementById("finalTotal");
@@ -176,7 +166,6 @@ function renderCart() {
     cartItems.appendChild(div);
   });
 
-  // DELIVERY LOGIC
   let delivery = subtotal > 2000 ? 0 : 50;
   let finalTotal = subtotal + delivery;
 
@@ -216,7 +205,6 @@ checkoutBtn.addEventListener("click", () => {
   renderCart();
 });
 
-// TOAST
 function showToast(message) {
   const toast = document.getElementById("toast");
   toast.innerText = message;
@@ -227,7 +215,6 @@ function showToast(message) {
   }, 2000);
 }
 
-// SEARCH
 const searchInput = document.getElementById("searchInput");
 
 searchInput.addEventListener("input", function () {
@@ -247,7 +234,6 @@ searchInput.addEventListener("input", function () {
   showNoResults(filteredMain, filteredSale, value);
 });
 
-// NO RESULTS
 function showNoResults(main, sale, value) {
   let message = document.getElementById("noResults");
 
@@ -272,7 +258,6 @@ displayProducts(products);
 displaySale(saleProducts);
 renderCart();
 
-// NEWSLETTER
 const newsletterForm = document.getElementById('newsletter-form');
 
 newsletterForm.addEventListener('submit', function(e) {
